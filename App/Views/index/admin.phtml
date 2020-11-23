@@ -1,0 +1,40 @@
+      
+      <div class="container d-flex justify-content-center">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-4  align-self-center shadow-lg rounded" id="div-login">
+            <div id="titulo">LOGIN</div>
+              <form action="/login" method="POST">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                      <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Email" aria-label="Email" name="email">
+                </div>       
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                      <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" name="senha">
+                </div>
+                <?php if(isset($_GET['logado'] ) &&  $_GET['logado'] == 'false'){?> 
+                  <div class="text text-danger">
+                    E-mail e senha inválidos(s)
+                  </div>
+                <?php } ?> 
+                <?php if(isset($_GET['inputvazio'] ) &&  $_GET['inputvazio'] == 'true'){?> 
+                  <div class="text text-danger">
+                  Por favor preencha todos os campos!
+                  </div>
+                <?php } ?> 
+                <div id="opcao" >
+                  <p>Ou <a href="">esqueci a Senha</a></p>
+                </div>         
+                <button type="submit" class="btn btn-dark " id="btn-entrar">Entrar</button>
+              </form>
+          </div>
+        </div>
+      </div>
