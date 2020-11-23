@@ -1,0 +1,36 @@
+html, body, .container, .row {
+   height: 100%;
+   width: 100%;
+   background: #ff4500;
+ }
+ #div-login{
+   background: white; 
+   padding-top: 30px;
+   padding-bottom: 40px;
+ }
+
+ #titulo{
+   text-align: center;
+   font-size: 25px;
+   padding-bottom: 30px;
+   font-weight: 600;
+ }
+
+ #btn-entrar{
+   width:100%;
+   border-radius: 20px;
+   margin-top: 20px;
+ }
+ p, #opcao{
+  
+   margin-bottom: 2px;
+   margin-top: 2px;
+   font-size: 13px;
+ }
+ #opcao{
+   width: 100%;
+   text-align: center;
+ }
+ #input-email{
+   margin-bottom: 20px;
+ }
