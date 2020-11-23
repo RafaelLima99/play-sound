@@ -1,0 +1,42 @@
+<div class="content p-4" id="musicas">  
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4 shadow ronded">
+                    <div class="card-body">
+                    <div class="col-md-12">
+                    <h2 class="mb-4">Administradores</h2>
+                </div>
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->view->admins as $admin) { ?>
+
+                        <tr>
+                        <td><?= $admin['id'] ?></td>
+                        <td><?= $admin['nome'] ?></td>
+                        <td><?= $admin['email'] ?></td>
+                        <td>
+                            <a href="/remove-adm?id_adm=<?= $admin['id'];?>" class="btn btn-danger btn-sm text-white">
+                                <i class="fa faw fa fa-trash"></i>
+                            </a>
+                        </td>
+                        </tr>
+                        <?php } ?>
+
+                    </tbody>
+                </table>  
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootadmin.min.js"></script>
+    
