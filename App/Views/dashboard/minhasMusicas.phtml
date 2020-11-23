@@ -1,0 +1,45 @@
+<div class="content p-4" id="musicas">  
+        <div class="row">
+            <div class="col-md-12">            
+                <div class="card mb-4 shadow ronded">
+                    <div class="card-body">
+                    <div class="col-md-12">
+                    <h2 class="mb-4">Minhas Músicas</h2>
+                </div>
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Música</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($this->view->musicas as $musica) { ?>
+
+                        <tr>
+                            <td><?= $musica['id'] ?></td>
+                            <td><?= $musica['musica'] ?></td>
+                            <td><?= $musica['autor'] ?></td>
+                            <td>
+                                <a href="editar?id=<?=$musica['id']?>" class="btn btn-primary btn-sm text-white">
+                                    <i class="fa faw fa-edit"></i>
+                                </a>
+                                <a href="/remove-musica?id_musica=<?= $musica['id'];?>&genero=<?= $musica['id_genero']?>&arquivo=<?= $musica['arquivo']?>" class="btn btn-danger btn-sm text-white">
+                                    <i class="fa faw fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+
+                    </tbody>
+                </table>  
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootadmin.min.js"></script>
+    
