@@ -1,0 +1,58 @@
+<div class="content p-4" id="musicas">  
+    <div class="row">
+        <div class="col-md-5">
+            <h2>Cadastrar administrador</h2>
+            <div class="card mb-4 mt-4 shadow ronded">
+                <div class="card-body">
+                    <form action="/cadastro"  method="post" >
+                        <div class="form-group">
+                            <label  for="exampleInputEmail1">
+                                <strong>Nome:</strong>
+                            </label>
+                            <input type="text" name="nome" class="form-control border border-dark" placeholder="Digite o nome">
+                        </div>
+                        <div class="form-group">
+                            <label  class="" for="exampleInputEmail1">
+                            <strong>Email:</strong>
+                            </label>
+                            <input type="text" name="email" class="form-control border border-dark"
+                            placeholder="Digite o e-mail">
+                        </div>
+                        <div class="form-group">
+                            <label  class="" for="exampleInputEmail1">
+                            <strong>Senha:</strong>
+                            </label>
+                            <input type="password" name="senha" class="form-control border border-dark" 
+                            placeholder="digite a senha">
+                        </div>
+                        <div class="form-group">
+                            <label class="" for="exampleFormControlSelect1">
+                                <strong> Selecione o nível de acesso:</strong>
+                            </label>
+                            <select class="form-control border border-dark col-md-7" name="nivel-acesso">
+                                <option value='1'>Limitado</option>
+                                <option value='2'>Acesso Total</option>
+                            </select>
+                        </div>
+                            <?php if(isset($_GET['inputvazio'] ) &&  $_GET['inputvazio'] == 'true'){?> 
+                                <div class="text text-danger">
+                                Por favor preencha todos os campos!
+                                </div>
+                            <?php } ?>
+                            <?php if(isset($_GET['emailvalido'] ) &&  $_GET['emailvalido'] == 'false'){?> 
+                                <div class="text text-danger">
+                                Já exite uma conta com esse E-mail, por favor insira outro!
+                                </div>
+                            <?php } ?>
+                            
+                            <button type="submit" class="btn btn-dark mt-3" id="btn-entrar">Cadastrar</button>
+                        </div>
+                    </form>    
+                </div>    
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootadmin.min.js"></script>
+    
