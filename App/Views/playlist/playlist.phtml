@@ -1,0 +1,63 @@
+
+    <section><!--Inicio palylist-->
+      <div class="container">
+        <div class="row playlist">
+          <div class="col-md-12 caixa">
+            <h2 class="mb-4 mt-4">
+              Playlist <?= $this->view->titulo?>
+
+            </h2>
+            <p>
+              <strong>Descrição:</strong>
+              <?= $this->view->descricao ?>
+
+            </p>
+            <p>
+              <strong>Total de músicas: </strong>
+              <?= $this->view->total ?> músicas
+            </p>
+          </div>
+          <div class="col-md-8 " id="lista">
+            <ul class="list-group list-group-flush" id="playlist">
+                <?php foreach ($this->view->musicas as $musica) { ?>
+
+              <li class="list-group-item">
+                <a href="<?= $this->view->diretorio ?><?=$musica['arquivo']?>" class="nome-musica">
+                  <i class="fa fa-play mr-1"></i>
+                  <?= $musica['musica']?> - <?= $musica['autor']?>
+
+                </a>
+              </li> 
+                <?php } ?>
+
+          </div>
+        </div>
+      </div>
+    </section><!--Fim section playlist-->
+    <div class="container-fluid fixed-bottom container-barra-play">
+      <div class="d-flex justify-content-center d-flex align-items-center" >
+        <div class="row barra-play">
+          <div class="col d-none d-md-block">
+            <div class="mr-2 btn-barra-play">
+              <a href="#" class="btn btn-dark" onclick="playlist.prevTrack();">
+                <i class="fa fa-fast-backward"></i>
+              </a>
+            </div>
+            <div class="btn-barra-play">
+              <a href="#" class="btn btn-dark " onclick="playlist.nextTrack();">
+                <i class="fa fa-fast-forward"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col ">
+            <div id="div-audio" class="ml-2">
+              <div class="mb-4 " id="div-audio">
+                <audio src="" controls id="audioPlayer">
+                   Sorry, your browser doesn't support html5!
+                 </audio>
+              </div>
+           </div>
+          </div>
+       </div>
+     </div> 
+    </div>
