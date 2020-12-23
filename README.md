@@ -7,8 +7,7 @@
 - Email e Senha da dashboard: Email: rafael@teste; Senha: 123
               
 
-- Play Sound é uma aplicação full stack web.
-Sistema de playlist onde você pode adicionar e escutar músicas, feito em PHP puro.
+- Play Sound é uma aplicação full stack web onde você pode adicionar e escutar músicas, feito em PHP puro.
 
 # Tecnologias utilizadas
 ## Back end
