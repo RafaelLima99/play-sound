@@ -1,10 +1,10 @@
 # Sobre o projeto
 
-Link do projeto em produção: http://radiomesquita.epizy.com/
+- Link do projeto em produção: http://radiomesquita.epizy.com/
 
-Link da dashboard: http://radiomesquita.epizy.com/admin
+- Link da dashboard: http://radiomesquita.epizy.com/admin
 
-Email e Senha da dashboard: Email: rafael@teste; Senha: 123
+- Email e Senha da dashboard: Email: rafael@teste; Senha: 123
               
 
 Play Sound é uma aplicação full stack web.
