@@ -24,14 +24,9 @@
                                     <strong> Selecione o genêro:</strong>
                                 </label>
                                 <select class="form-control border border-dark" name="genero" id="genero">
-                                    <option value='1'>Eletrônica</option>
-                                    <option value='2'>Rap</option>
-                                    <option value='3'>Evangélica</option>
-                                    <option value='4'>Para Estudar</option>
-                                    <option value='5'>Reggae</option>
-                                    <option value='6'>Para Programar</option>
-                                    <option value='7'>Anime</option>
-                                    <option value='8'>Forró</option>
+                                    <?php foreach($this->view->generos as $genero) : ?>
+                                    <option value='<?=$genero['id']?>'><?=$genero['genero']?></option>
+                                    <?php endforeach ?>
                                 </select>
                             </div>
                             <div class="form-group">

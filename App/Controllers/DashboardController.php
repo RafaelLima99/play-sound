@@ -31,6 +31,12 @@ class DashboardController extends Action
 	public function upload()
 	{
 		$this->validaLogin();
+
+		$genero  = Container::getModel('Genero');
+		
+		$generos = $genero->getGenero();
+
+		$this->view->generos = $generos;
 		$this->render('upload','layouts/layoutDashboard');
 	}
 
