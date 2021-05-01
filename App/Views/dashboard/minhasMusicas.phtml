@@ -1,45 +1,103 @@
 <div class="content p-4" id="musicas">  
-        <div class="row">
-            <div class="col-md-12">            
-                <div class="card mb-4 shadow ronded">
-                    <div class="card-body">
+    <div class="row">
+        <div class="col-md-12">            
+            <div class="card mb-4 shadow ronded">
+                <div class="card-body">
                     <div class="col-md-12">
-                    <h2 class="mb-4">Minhas Músicas</h2>
+                        <h2 class="mb-4 ">Minhas Músicas</h2>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <form method="get" action="minhas-musicas">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Pesquisar música" name="musica">                                
+                                        <button class="btn btn-dark ml-2" type="submit"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <?php if($this->view->musicas == null && $this->view->pesquisa == true): ?>
+                                <div class="text-danger col-md-12 mb-4">
+                                    Não foi encontrado nenhuma música com: <strong><?=$this->view->nome?></strong> 
+                                    <a href="/minhas-musicas" class="ml-4 "> <i class="fas fa-arrow-left"></i> Voltar </a>
+                                </div>
+                            <?php endif ?>
+                            <?php if($this->view->musicas && $this->view->pesquisa == true): ?>
+                                <div class="text-success col-md-12 mb-4">
+                                    Resultados da pesquisa para: <strong><?=$this->view->nome?></strong> 
+                                    <a href="/minhas-musicas" class="ml-4 "> <i class="fas fa-arrow-left"></i> Voltar </a>
+                                </div>
+                            <?php endif ?>
+                        </div>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Música</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($this->view->musicas as $musica): ?>
+                            <tr>
+                                <td><?= $musica['id'] ?></td>
+                                <td><?= $musica['musica'] ?></td>
+                                <td><?= $musica['autor'] ?></td>
+                                <td>
+                                    <a href="editar?id=<?=$musica['id']?>" class="btn btn-primary btn-sm text-white">
+                                        <i class="fa faw fa-edit"></i>
+                                    </a>
+                                    <a href="/remove-musica?id_musica=<?= $musica['id'];?>&genero=<?= $musica['id_genero']?>&arquivo=<?= $musica['arquivo']?>" class="btn btn-danger btn-sm text-white">
+                                        <i class="fa faw fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>  
                 </div>
-                <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Música</th>
-                            <th scope="col">Autor</th>
-                            <th scope="col">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($this->view->musicas as $musica) { ?>
+                <?php if($this->view->pesquisa == false):?>
+                    <nav aria-label>
+                        <ul class="pagination">
 
-                        <tr>
-                            <td><?= $musica['id'] ?></td>
-                            <td><?= $musica['musica'] ?></td>
-                            <td><?= $musica['autor'] ?></td>
-                            <td>
-                                <a href="editar?id=<?=$musica['id']?>" class="btn btn-primary btn-sm text-white">
-                                    <i class="fa faw fa-edit"></i>
-                                </a>
-                                <a href="/remove-musica?id_musica=<?= $musica['id'];?>&genero=<?= $musica['id_genero']?>&arquivo=<?= $musica['arquivo']?>" class="btn btn-danger btn-sm text-white">
-                                    <i class="fa faw fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php } ?>
+                        <?php if($this->view->paginaAnterior == false):?>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="">Anterior</a>
+                            </li>
+                        <?php else: ?>
+                            <li class="page-item">
+                                <a class="page-link" href="minhas-musicas?pagina=<?= $this->view->paginaAnterior ?>">Anterior</a>
+                            </li>
+                        <?php endif ?>
 
-                    </tbody>
-                </table>  
+                            <?php for($i = 1; $i <= $this->view->totalPaginacao; $i++): ?>
+
+                                <?php if($i == $this->view->paginaAtual):?>
+                                    <li class="page-item active"><a class="page-link" href="minhas-musicas?pagina=<?=$i?>"><?=$i?></a></li>
+                                <?php else:?>
+                                    <li class="page-item"><a class="page-link" href="minhas-musicas?pagina=<?=$i?>"><?=$i?></a></li>
+                                <?php endif ?>
+
+                            <?php endfor ?>
+
+                            <?php if($this->view->paginaPosterior == false):?>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="">Próximo</a>
+                                </li>
+                            <?php else: ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="minhas-musicas?pagina=<?= $this->view->paginaPosterior ?>">Próximo</a>
+                                </li>
+                            <?php endif ?>
+
+                        </ul>
+                    </nav>
+                <?php endif ?>
             </div>
         </div>
     </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/bootadmin.min.js"></script>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootadmin.min.js"></script>
     
