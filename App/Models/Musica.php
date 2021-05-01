@@ -11,6 +11,9 @@ class Musica extends Model
     private $musica;
     private $autor;
     private $arquivo;
+    private $quantidadePorPagina;
+    private $inicio;
+    private $nome;
 
     public function salvar()
     {
@@ -61,13 +64,26 @@ class Musica extends Model
     public function getPorAdm()
     {
         $query = "SELECT id, id_genero, musica, autor, arquivo FROM tb_musicas 
-                  WHERE id_adm = :id_adm ORDER BY id DESC";
+                  WHERE id_adm = :id_adm ORDER BY id DESC LIMIT :inicio, :quantidadePorPagina";
                   
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_adm', $this->__get('id_adm'));
+        $stmt->bindValue(':inicio', $this->__get('inicio'), \PDO::PARAM_INT);
+        $stmt->bindValue(':quantidadePorPagina', $this->__get('quantidadePorPagina'), \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getPorNome(){
+        
+        $query = "SELECT * FROM `tb_musicas` WHERE musica LIKE '%' :nome '%' ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':nome', $this->__get('nome'));
+        $stmt->execute();
+         
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+       
     }
 
     public function getPorId()
@@ -97,6 +113,15 @@ class Musica extends Model
         $stmt->bindValue(':id',     $this->__get('id'));
         $stmt->execute();
     } 
+
+    public function totalMusicas(){
+        $query = "SELECT COUNT(*) AS total FROM tb_musicas where id_adm = :id_adm";
+        $stmt  = $this->db->prepare($query);
+        $stmt->bindValue(':id_adm', $this->__get('id_adm'));
+        $stmt->execute();
+        
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 
     public function __get($atributo)
     {

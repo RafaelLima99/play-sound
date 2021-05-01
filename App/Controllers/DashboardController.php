@@ -81,8 +81,51 @@ class DashboardController extends Action
 		//session id, contém o id do usário logado
 		$musica->__set('id_adm', $_SESSION['id']);
 		//retorna as músicas envidas pelo adm que está logado
-		$this->view->musicas = $musica->getPorAdm();
 
+		//paginação
+		$quantidadePorPagina = 10;
+        $paginaAtual 		 = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+        $inicio				 = ($quantidadePorPagina * $paginaAtual) - $quantidadePorPagina;
+		$totalRegistros 	 = $musica->totalMusicas();
+		$totalPaginacao 	 = ceil($totalRegistros['total'] / $quantidadePorPagina);
+
+		$musica->__set('quantidadePorPagina', $quantidadePorPagina);
+		$musica->__set('paginaAtual', $paginaAtual);
+		$musica->__set('inicio', $inicio);
+
+		if($paginaAtual >= $totalPaginacao){
+			$paginaPosterior = false;
+		}else{
+			$paginaPosterior = $paginaAtual + 1;
+		}
+
+		if($paginaAtual <= 1){
+			$paginaAnterior = false;
+		}else{
+			$paginaAnterior = $paginaAtual - 1 ;
+		}
+
+		//Pesquisa por nome
+		if(isset($_GET['musica']) && $_GET['musica'] != null){
+			
+			$musica->__set('nome', $_GET['musica']);
+			$musicas  =  $musica->getPorNome();
+			$pesquisa = true;
+			$this->view->nome = $_GET['musica'];
+			
+		}else{
+			$musicas  = $musica->getPorAdm();
+			$pesquisa = false;
+		}
+		
+		//variaveis que vão para view
+		$this->view->musicas 		 = $musicas;
+		$this->view->totalPaginacao	 = $totalPaginacao;
+		$this->view->paginaPosterior = $paginaPosterior;
+		$this->view->paginaAnterior	 = $paginaAnterior;
+		$this->view->paginaAtual 	 = $paginaAtual;
+		$this->view->pesquisa 		 = $pesquisa;
+		
 		$this->render('minhasMusicas','layouts/layoutDashboard');
 	}
 
