@@ -42,7 +42,9 @@ class Musica extends Model
     public function getTotalGenero()
     {
         //o GROUP BY está agrupando músicas quem tem o mesmo id_genero
-        $query = "SELECT COUNT(*) AS total, id_genero AS genero FROM tb_musicas GROUP BY id_genero";
+        $query = "SELECT COUNT(*) AS total, g.genero AS genero FROM tb_musicas as m 
+                  INNER JOIN tb_genero as g on m.id_genero = g.id GROUP BY id_genero";
+                  
         $stmt  = $this->db->prepare($query);
         $stmt->execute();
 

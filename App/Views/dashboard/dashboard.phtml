@@ -3,86 +3,18 @@
             <div class="col-md-12">
                 <h2 class="mb-4">Total de Músicas</h2>
             </div>
+            <?php foreach($this->view->totalPorGenero as $total):?>
             <div class="col-md-3">
                 <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas eletronica</div>
+                    <div class="card-header bg-dark text-white">Músicas <?=$total['genero']?></div>
                     <div class="card-body">
                         <h5 class="card-title">
-                        <?= $this->view->totalEletronica ?> músicas
+                        <?=$total['total']?> músicas
                         </h5>
                     </div>
                 </div>    
             </div>
-            <div class="col-md-3">
-                <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas de rap</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <?= $this->view->totalRap ?> músicas
-                        </h5>
-                    </div>
-                </div>    
-            </div>
-            <div class="col-md-3">
-                <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas evangélica</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <?= $this->view->totalEvangelica ?> músicas
-                        </h5>
-                    </div>
-                </div>    
-            </div>
-            <div class="col-md-3">
-                <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas para estudar</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <?= $this->view->totalParaEstudar?> músicas
-                        </h5>
-                    </div>
-                </div>    
-            </div>
-            <div class="col-md-3">
-                <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas de reggae</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <?= $this->view->totalReggae ?> músicas
-                        </h5>
-                    </div>
-                </div>    
-            </div>
-            <div class="col-md-3">
-                <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas para programar</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <?= $this->view->totalParaProgramar?> músicas
-                        </h5>
-                    </div>
-                </div>    
-            </div>
-            <div class="col-md-3">
-                <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas de anime</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <?= $this->view->totalAnime?> músicas
-                        </h5>
-                    </div>
-                </div>    
-            </div>
-            <div class="col-md-3">
-                <div class="card bg-light shadow rounded mb-3">
-                    <div class="card-header bg-dark text-white">Músicas de forró</div>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                        <?= $this->view->totalForro ?> músicas
-                        </h5>
-                    </div>
-                </div>    
-            </div>
+            <?php endforeach ?>
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
