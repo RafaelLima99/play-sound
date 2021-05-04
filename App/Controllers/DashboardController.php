@@ -14,16 +14,7 @@ class DashboardController extends Action
 		$this->validaLogin();
 		$musica = Container::getModel('Musica');
 		//getTotalGenero retorna um array com a quantidade de músicas por genêro
-		$generos = $musica->getTotalGenero();
-		//verifica se o indece do array existe, se não existir atribui o valor 0
-		$this->view->totalEletronica    = isset($generos[0]['total']) ? $generos[0]['total'] : 0;
-		$this->view->totalRap 		    = isset($generos[1]['total']) ? $generos[1]['total'] : 0;
-		$this->view->totalEvangelica    = isset($generos[2]['total']) ? $generos[2]['total'] : 0;	
-		$this->view->totalParaEstudar   = isset($generos[3]['total']) ? $generos[3]['total'] : 0;
-		$this->view->totalReggae 	    = isset($generos[4]['total']) ? $generos[4]['total'] : 0;
-		$this->view->totalParaProgramar = isset($generos[5]['total']) ? $generos[5]['total'] : 0;
-		$this->view->totalAnime	        = isset($generos[6]['total']) ? $generos[6]['total'] : 0;
-		$this->view->totalForro         = isset($generos[7]['total']) ? $generos[7]['total'] : 0;
+		$this->view->totalPorGenero = $musica->getTotalGenero();;
 
 		$this->render('dashboard','layouts/layoutDashboard');
 	}
