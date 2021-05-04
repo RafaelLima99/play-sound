@@ -140,6 +140,18 @@ class Route extends Bootstrap
 			'action' => 'forro'
 		);
 
+		$routes['playlist'] = array(
+			'route' => '/playlist',
+			'controller' => 'PlaylistController',
+			'action' => 'forro'
+		);
+
+		$routes['genero'] = array(
+			'route' => '/generos',
+			'controller' => 'GeneroController',
+			'action' => 'index'
+		);
+
 		$this->setRoutes($routes);
 	}
 }
