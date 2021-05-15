@@ -326,7 +326,54 @@ class DashboardController extends Action
 	public function genero(){
 		$this->validaLogin();
 		$genero  = Container::getModel('Genero');
-		$this->view->generos  = $genero->getGenero();
+
+
+		//paginação
+		$quantidadePorPagina = 10;
+        $paginaAtual 		 = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+        $inicio				 = ($quantidadePorPagina * $paginaAtual) - $quantidadePorPagina;
+		$totalRegistros 	 = $genero->totalGeneros();
+		$totalPaginacao 	 = ceil($totalRegistros['total'] / $quantidadePorPagina);
+
+		$genero->__set('quantidadePorPagina', $quantidadePorPagina);
+		$genero->__set('paginaAtual', $paginaAtual);
+		$genero->__set('inicio', $inicio);
+
+		if($paginaAtual >= $totalPaginacao){
+			$paginaPosterior = false;
+		}else{
+			$paginaPosterior = $paginaAtual + 1;
+		}
+
+		if($paginaAtual <= 1){
+			$paginaAnterior = false;
+		}else{
+			$paginaAnterior = $paginaAtual - 1 ;
+		}
+		
+
+
+		//Pesquisa por nome
+		if(isset($_GET['genero']) && $_GET['genero'] != null){
+			
+			$genero->__set('genero', $_GET['genero']);
+			$generos  =  $genero->getPorGenero();
+			$pesquisa = true;
+			$this->view->pesquisaGenero = $_GET['genero'];
+			
+		}else{
+			$generos  = $genero->getGeneroPaginacao();
+			$pesquisa = false;
+		}
+
+
+		$this->view->generos		 = $generos;
+		$this->view->pesquisa 		 = $pesquisa;
+		$this->view->totalPaginacao	 = $totalPaginacao;
+		$this->view->paginaPosterior = $paginaPosterior;
+		$this->view->paginaAnterior	 = $paginaAnterior;
+		$this->view->paginaAtual 	 = $paginaAtual;
+
 		$this->render('generos','layouts/layoutDashboard');
 	}
 
