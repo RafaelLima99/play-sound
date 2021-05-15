@@ -1,0 +1,34 @@
+    <div class="content p-4 ">  
+        <div class="alert">
+            <?php if (isset($_GET['erro'])) : ?>
+                <span class="text text-danger">
+                    Por favor preencha todos os campos!
+                </span>
+            <?php endif ?>     
+        </div> 
+        <div class="row ">
+            <div class="col-md-5">
+                <h2 class="mb-4">Cadastrar Gênero</h2>
+                <div class="card mb-4 shadow rounded">
+                    <div class="card-body">
+                        <form action="/cadastra-genero" method="post">
+                            <div class="form-group">
+                                <label  for="exampleInputEmail1">
+                                    <strong>Nome do gênero:</strong>
+                                </label>
+                                <input type="text" name="genero" class="form-control border border-dark" placeholder="Ex: Forró">
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label"> <strong>Descrição: </strong></label>
+                                <textarea class="form-control border border-dark" id="descricao" rows="3" name="descricao"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Enviar</button>
+                        </form>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div> 
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootadmin.min.js"></script>

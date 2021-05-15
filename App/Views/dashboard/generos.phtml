@@ -1,0 +1,49 @@
+<div class="content p-4" id="musicas">  
+    <div class="row">
+        <div class="col-md-12">            
+            <div class="card mb-4 shadow ronded">
+                <div class="card-body">
+                    <div class="col-md-9">
+                        <h2 class="mb-4 ">Gêneros</h2>
+                        
+                    </div>
+                    <div class="mb-4">
+                        <a href="/criar-genero" class="btn btn-dark ml-2">Cadastrar gênero</a>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Gênero</th>
+                                <th scope="col">Diretório</th>
+                                <th scope="col">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($this->view->generos as $genero): ?>
+                            <tr>
+                                <td><?= $genero['id'] ?></td>
+                                <td><?= $genero['genero'] ?></td>
+                                <td><?= $genero['diretorio'] ?></td>
+                                <td>
+                                    <a href="/editar-genero?id=<?= $genero['id']?>" class="btn btn-primary btn-sm text-white">
+                                        <i class="fa faw fa-edit"></i>
+                                    </a>
+                                    <a href="/remover-genero?id=<?= $genero['id']?>" class="btn btn-danger btn-sm text-white">
+                                        <i class="fa faw fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootadmin.min.js"></script>
+    

@@ -10,6 +10,10 @@ class IndexController extends Action
 {
 	public function index()
 	{
+		$genero  = Container::getModel('Genero');
+		$generos = $genero->getGenero();
+		
+		$this->view->generos = $generos;	
 		$this->render('index','layouts/layoutIndex');
 	}
 
