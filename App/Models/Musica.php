@@ -98,6 +98,18 @@ class Musica extends Model
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public function getPorNomeEId(){
+       
+        $query = "SELECT * FROM `tb_musicas` WHERE id_genero = :id_genero AND musica LIKE '%' :nome '%' ";
+        $stmt  = $this->db->prepare($query);
+        $stmt->bindValue(':id_genero', $this->__get('id_genero'));
+        $stmt->bindValue(':nome', $this->__get('nome'));
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    
+
     public function removeMusica()
     {
         $query = "DELETE FROM tb_musicas WHERE id = :id";

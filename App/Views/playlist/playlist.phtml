@@ -5,22 +5,44 @@
           <div class="col-md-12 caixa">
             <h2 class="mb-4 mt-4">
               Playlist <?= $this->view->titulo?>
-
             </h2>
-            <p>
-              <strong>Descrição:</strong>
-              <?= $this->view->descricao ?>
-
-            </p>
-            <p>
-              <strong>Total de músicas: </strong>
-              <?= $this->view->total ?> músicas
-            </p>
+            <div class="form-group col-md-3">
+              <form method="get" action="/playlist?genero=<?= $this->view->genero ?>">
+                  <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Pesquisar música" name="genero">                                
+                      <button class="btn btn-dark ml-2" type="submit"><i class="fas fa-search"></i></button>
+                  </div>
+              </form>
+            </div>
+            <?php if(isset( $this->view->descricao)) {?>
+              <p>
+                <strong>Descrição:</strong>
+                <?= $this->view->descricao ?>
+              </p>
+            <?php } ?>
+            <?php if(isset($this->view->total)) {?>
+              <p>
+                <strong>Total de músicas: </strong>
+                <?= $this->view->total ?> músicas
+              </p>
+            <?php } ?>
+            <?php if($this->view->musicas == null && $this->view->pesquisa == true): ?>
+                    <div class="text-danger col-md-12 mb-4">
+                        Não foi encontrado nenhuma música com: <strong><?=$this->view->pesquisaMusica?></strong> 
+                        <a href="/playlist?genero=<?=$this->view->genero?>&id=<?=$this->view->idGenero?>" class="ml-4 "> <i class="fas fa-arrow-left"></i> Voltar </a>
+                    </div>
+            <?php endif ?>
+            <?php if($this->view->musicas && $this->view->pesquisa == true): ?>
+                <div class="text-success col-md-12 mb-4">
+                    Resultados da pesquisa para: <strong><?=$this->view->pesquisaMusica?></strong> 
+                    <a href="/generos" class="ml-4 "> <i class="fas fa-arrow-left"></i> Voltar </a>
+                </div>
+            <?php endif ?>
           </div>
           <div class="col-md-8 " id="lista">
             <ul class="list-group list-group-flush" id="playlist">
                 <?php foreach ($this->view->musicas as $musica) { ?>
-
+                
               <li class="list-group-item">
                 <a href="<?= $this->view->diretorio ?><?=$musica['arquivo']?>" class="nome-musica">
                   <i class="fa fa-play mr-1"></i>

@@ -141,22 +141,46 @@ class PlaylistController extends Action
             $genero->__set('id', $id);
             $dadosGenero = $genero->getPorId();
 
-            //informações que são atibuidas a view playlist
-            $this->view->titulo    = $dadosGenero['genero']; 
-            $this->view->descricao = $dadosGenero['descricao'];
-            $this->view->diretorio = $dadosGenero['diretorio'];
- 
-            $musica = Container::getModel('Musica');
-            $musica->__set('id_genero', $dadosGenero['id']);
-            
-            //retorna o total de musicas por genêro
-            $this->view->total = $musica->getTotalMusica();
-            //retorna as musicas por genêro
-            $this->view->musicas = $musica->getPorGenero();
+            if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != null){
+
+                $musica = Container::getModel('musica');
+
+                $musica->__set('id_genero', $id);
+                $musica->__set('nome', $_GET['pesquisa']);
+
+                $this->view->idGenero = $id;
+                $this->view->genero = $genero;
+                $this->view->pesquisa = $pesquisa = true;
+			    $this->view->pesquisaMusica = $_GET['pesquisa'];
+
+                $this->view->titulo    = $dadosGenero['genero']; 
+                $this->view->diretorio = $dadosGenero['diretorio'];
+
+                $this->view->musicas = $musica->getPorNomeEId();
+                // var_dump($this->view->musicas);die;
+                $this->render('playlist', 'layouts/layoutPlaylist');
+
+            }else{
+                 //informações que são atibuidas a view playlist
+                $this->view->titulo    = $dadosGenero['genero']; 
+                $this->view->descricao = $dadosGenero['descricao'];
+                $this->view->diretorio = $dadosGenero['diretorio'];
     
-            $this->render('playlist', 'layouts/layoutPlaylist');
+                $musica = Container::getModel('Musica');
+                $musica->__set('id_genero', $dadosGenero['id']);
+                
+                $this->view->pesquisa = $pesquisa = false;
+
+                //retorna o total de musicas por genêro
+                $this->view->total = $musica->getTotalMusica();
+                //retorna as musicas por genêro
+                $this->view->musicas = $musica->getPorGenero();
+        
+                $this->render('playlist', 'layouts/layoutPlaylist');
+            }
+          
         }else{
             echo "Erro 404";
-        }
+        } 
     }
 } 
