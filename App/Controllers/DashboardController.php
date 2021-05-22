@@ -324,9 +324,9 @@ class DashboardController extends Action
 	// }
 
 	public function genero(){
+
 		$this->validaLogin();
 		$genero  = Container::getModel('Genero');
-
 
 		//paginação
 		$quantidadePorPagina = 10;
@@ -351,8 +351,6 @@ class DashboardController extends Action
 			$paginaAnterior = $paginaAtual - 1 ;
 		}
 		
-
-
 		//Pesquisa por nome
 		if(isset($_GET['genero']) && $_GET['genero'] != null){
 			
@@ -365,7 +363,6 @@ class DashboardController extends Action
 			$generos  = $genero->getGeneroPaginacao();
 			$pesquisa = false;
 		}
-
 
 		$this->view->generos		 = $generos;
 		$this->view->pesquisa 		 = $pesquisa;
@@ -392,7 +389,10 @@ class DashboardController extends Action
 
 
 		if ( !empty($nomeGenero) && !empty($descricao)) {
-			
+
+			//torna uma string minúscula
+			$nomeGenero = mb_strtolower($nomeGenero);
+
 			$diretorio = 'musicas/'.$nomeGenero.'/';
 
 			$genero->__set('genero', $nomeGenero);
@@ -413,6 +413,7 @@ class DashboardController extends Action
 	}
 
 	public function editarGenero(){
+
 		$this->validaLogin();
 
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
@@ -452,6 +453,7 @@ class DashboardController extends Action
 	}
 
 	public function removerGenero(){
+
 		$this->validaLogin();
 
 		$id = isset($_GET['id']) ? $_GET['id'] : null;
