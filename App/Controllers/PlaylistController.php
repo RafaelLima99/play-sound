@@ -142,14 +142,14 @@ class PlaylistController extends Action
             $dadosGenero = $genero->getPorId();
 
             if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != null){
-
+                echo "entrou";
                 $musica = Container::getModel('musica');
 
                 $musica->__set('id_genero', $id);
                 $musica->__set('nome', $_GET['pesquisa']);
 
                 $this->view->idGenero = $id;
-                $this->view->genero = $genero;
+                $this->view->genero =  $dadosGenero['genero'];
                 $this->view->pesquisa = $pesquisa = true;
 			    $this->view->pesquisaMusica = $_GET['pesquisa'];
 
@@ -158,10 +158,13 @@ class PlaylistController extends Action
 
                 $this->view->musicas = $musica->getPorNomeEId();
                 // var_dump($this->view->musicas);die;
+               
                 $this->render('playlist', 'layouts/layoutPlaylist');
 
             }else{
                  //informações que são atibuidas a view playlist
+                $this->view->idGenero = $id;
+                $this->view->genero = $dadosGenero['genero'];
                 $this->view->titulo    = $dadosGenero['genero']; 
                 $this->view->descricao = $dadosGenero['descricao'];
                 $this->view->diretorio = $dadosGenero['diretorio'];
