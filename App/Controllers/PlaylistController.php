@@ -141,6 +141,37 @@ class PlaylistController extends Action
             $genero->__set('id', $id);
             $dadosGenero = $genero->getPorId();
 
+            //paginação
+
+            $musica = Container::getModel('musica');
+            $musica->__set('id_genero', $id);
+
+            $quantidadePorPagina = 10;
+            $paginaAtual 		 = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+            $inicio				 = ($quantidadePorPagina * $paginaAtual) - $quantidadePorPagina;
+            $totalRegistros 	 = $musica->getTotalMusica();
+            $totalPaginacao 	 = ceil($totalRegistros / $quantidadePorPagina);
+
+            // var_dump($totalRegistros);die;
+         
+            $musica->__set('quantidadePorPagina', $quantidadePorPagina);
+            $musica->__set('paginaAtual', $paginaAtual);
+            $musica->__set('inicio', $inicio);
+
+            if($paginaAtual >= $totalPaginacao){
+                $paginaPosterior = false;
+            }else{
+                $paginaPosterior = $paginaAtual + 1;
+            }
+
+            if($paginaAtual <= 1){
+                $paginaAnterior = false;
+            }else{
+                $paginaAnterior = $paginaAtual - 1 ;
+            }
+
+            
+
             if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != null){
                 echo "entrou";
                 $musica = Container::getModel('musica');
@@ -168,6 +199,11 @@ class PlaylistController extends Action
                 $this->view->titulo    = $dadosGenero['genero']; 
                 $this->view->descricao = $dadosGenero['descricao'];
                 $this->view->diretorio = $dadosGenero['diretorio'];
+
+                $this->view->totalPaginacao	 = $totalPaginacao;
+		        $this->view->paginaPosterior = $paginaPosterior;
+		        $this->view->paginaAnterior	 = $paginaAnterior;
+		        $this->view->paginaAtual 	 = $paginaAtual;
     
                 $musica = Container::getModel('Musica');
                 $musica->__set('id_genero', $dadosGenero['id']);

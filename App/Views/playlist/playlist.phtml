@@ -60,6 +60,51 @@
 
           </div>
         </div>
+        <?php if($this->view->pesquisa == false):?>
+                    <nav aria-label>
+                        <ul class="pagination">
+
+                        <?php if($this->view->paginaAnterior == false):?>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="">Anterior</a>
+                            </li>
+                        <?php else: ?>
+                            <li class="page-item">
+                                <a class="page-link" href="minhas-musicas?pagina=<?= $this->view->paginaAnterior ?>">Anterior</a>
+                            </li>
+                        <?php endif ?>
+
+                            <?php for($i = 1; $i <= $this->view->totalPaginacao; $i++): ?>
+
+                                <?php if($i == $this->view->paginaAtual):?>
+                                    <li class="page-item active"><a class="page-link" href="minhas-musicas?pagina=<?=$i?>"><?=$i?></a></li>
+                                <?php else:?>
+                                    <li class="page-item"><a class="page-link" href="minhas-musicas?pagina=<?=$i?>"><?=$i?></a></li>
+                                <?php endif ?>
+
+                            <?php endfor ?>
+
+                            <?php if($this->view->paginaPosterior == false):?>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="">Próximo</a>
+                                </li>
+                            <?php else: ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="playlist?genero=<?=$this->view->genero?>&id=<?=$this->view->idGenero?>&pagina=<?= $this->view->paginaPosterior ?>">Próximo</a>
+                                </li>
+                            <?php endif ?>
+
+                        </ul>
+                    </nav>
+                <?php endif ?>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
       </div>
     </section><!--Fim section playlist-->
     <div class="container-fluid fixed-bottom container-barra-play">
@@ -89,3 +134,5 @@
        </div>
      </div> 
     </div>
+
+  
