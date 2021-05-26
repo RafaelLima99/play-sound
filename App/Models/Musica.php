@@ -54,10 +54,12 @@ class Musica extends Model
     public function getPorGenero()
     {
         $query = "SELECT musica, autor, arquivo FROM tb_musicas 
-                  WHERE id_genero = :id_genero  ORDER BY id DESC" ;
+                  WHERE id_genero = :id_genero ORDER BY id DESC LIMIT :inicio, :quantidadePorPagina" ;
       
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_genero',$this->__get('id_genero'));
+        $stmt->bindValue(':inicio', $this->__get('inicio'), \PDO::PARAM_INT);
+        $stmt->bindValue(':quantidadePorPagina', $this->__get('quantidadePorPagina'), \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
