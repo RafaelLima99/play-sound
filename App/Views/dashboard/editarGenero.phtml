@@ -1,0 +1,38 @@
+    <div class="content p-4 ">  
+        <div class="alert">     
+        </div>
+        <div class="row ">
+            <div class="col-md-5">
+                <h2 class="mb-4">Editar Gênero</h2>
+                <div class="card mb-4 shadow rounded">
+                    <div class="card-body">
+                        <form action="/atualizar-genero" method="post">
+                            <div class="form-group">
+                                <label  for="exampleInputEmail1">
+                                    <strong>Nome do gênero:</strong>
+                                </label>
+                                <input type="text" class="form-control border border-dark" placeholder="<?= $this->view->dadosGenero['genero']?>" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label  for="exampleInputEmail1">
+                                    <strong>Diretório:</strong>
+                                </label>
+                                <input type="text" class="form-control border border-dark" placeholder="<?=$this->view->dadosGenero['diretorio']?>" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descricao" class="form-label"> <strong>Descrição: </strong></label>
+                                <textarea class="form-control border border-dark" id="descricao" rows="3" name="descricao"><?=$this->view->dadosGenero['descricao']?></textarea>
+                            </div>
+                            <input type='hidden' name='id' value='<?= $this->view->dadosGenero['id']?>'>
+                            <div class="card-footer bg-white">
+                                <button type="submit" class="btn btn-dark">Atualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div> 
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootadmin.min.js"></script>

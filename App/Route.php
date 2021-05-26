@@ -140,6 +140,54 @@ class Route extends Bootstrap
 			'action' => 'forro'
 		);
 
+		$routes['playlist'] = array(
+			'route' => '/playlist',
+			'controller' => 'PlaylistController',
+			'action' => 'forro'
+		);
+
+		$routes['genero'] = array(
+			'route' => '/generos',
+			'controller' => 'DashboardController',
+			'action' => 'genero'
+		);
+
+		$routes['criar-genero'] = array(
+			'route' => '/criar-genero',
+			'controller' => 'DashboardController',
+			'action' => 'criaGenero'
+		);
+
+		$routes['cadastra-genero'] = array(
+			'route' => '/cadastra-genero',
+			'controller' => 'DashboardController',
+			'action' => 'cadastroGenero'
+		);
+
+		$routes['editar-genero'] = array(
+			'route' => '/editar-genero',
+			'controller' => 'DashboardController',
+			'action' => 'editarGenero'
+		);
+
+		$routes['atualizar-genero'] = array(
+			'route' => '/atualizar-genero',
+			'controller' => 'DashboardController',
+			'action' => 'atualizarGenero'
+		);
+
+		$routes['remover-genero'] = array(
+			'route' => '/remover-genero',
+			'controller' => 'DashboardController',
+			'action' => 'removerGenero'
+		);
+
+		$routes['playlist'] = array(
+			'route' => '/playlist',
+			'controller' => 'PlaylistController',
+			'action' => 'index'
+		);
+
 		$this->setRoutes($routes);
 	}
 }

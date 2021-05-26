@@ -1,0 +1,105 @@
+<div class="content p-4" id="musicas">  
+    <div class="row">
+        <div class="col-md-12">            
+            <div class="card mb-4 shadow ronded">
+                <div class="card-body">
+                    <div class="col-md-9">
+                        <h2 class="mb-4 ">Gêneros Músicais</h2>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <form method="get" action="generos  ">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Pesquisar música" name="genero">                                
+                                <button class="btn btn-dark ml-2" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <?php if($this->view->generos == null && $this->view->pesquisa == true): ?>
+                        <div class="text-danger col-md-12 mb-4">
+                            Não foi encontrado nenhuma música com: <strong><?=$this->view->pesquisaGenero?></strong> 
+                            <a href="/generos" class="ml-4 "> <i class="fas fa-arrow-left"></i> Voltar </a>
+                        </div>
+                    <?php endif ?>
+                    <?php if($this->view->generos && $this->view->pesquisa == true): ?>
+                        <div class="text-success col-md-12 mb-4">
+                            Resultados da pesquisa para: <strong><?=$this->view->pesquisaGenero?></strong> 
+                            <a href="/generos" class="ml-4 "> <i class="fas fa-arrow-left"></i> Voltar </a>
+                        </div>
+                    <?php endif ?>
+
+                    <div class="form-group col-md-12 d-flex justify-content-end">
+                        <a href="/criar-genero" class="btn btn-dark ml-2">Cadastrar gênero</a>
+                    </div>  
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Gênero</th>
+                                <th scope="col">Diretório</th>
+                                <th scope="col">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($this->view->generos as $genero): ?>
+                            <tr>
+                                <td><?= $genero['id'] ?></td>
+                                <td><?= $genero['genero'] ?></td>
+                                <td><?= $genero['diretorio'] ?></td>
+                                <td>
+                                    <a href="/editar-genero?id=<?= $genero['id']?>" class="btn btn-primary btn-sm text-white">
+                                        <i class="fa faw fa-edit"></i>
+                                    </a>
+                                    <a href="/remover-genero?id=<?= $genero['id']?>" class="btn btn-danger btn-sm text-white">
+                                        <i class="fa faw fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>  
+                </div>
+                <?php if($this->view->pesquisa == false):?>
+                    <nav aria-label>
+                        <ul class="pagination">
+                        <?php if($this->view->paginaAnterior == false):?>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="">Anterior</a>
+                            </li>
+                        <?php else: ?>
+                            <li class="page-item">
+                                <a class="page-link" href="generos?pagina=<?= $this->view->paginaAnterior ?>">Anterior</a>
+                            </li>
+                        <?php endif ?>
+
+                            <?php for($i = 1; $i <= $this->view->totalPaginacao; $i++): ?>
+
+                                <?php if($i == $this->view->paginaAtual):?>
+                                    <li class="page-item active"><a class="page-link" href="generos?pagina=<?=$i?>"><?=$i?></a></li>
+                                <?php else:?>
+                                    <li class="page-item"><a class="page-link" href="generos?pagina=<?=$i?>"><?=$i?></a></li>
+                                <?php endif ?>
+
+                            <?php endfor ?>
+
+                            <?php if($this->view->paginaPosterior == false):?>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="">Próximo</a>
+                                </li>
+                            <?php else: ?>
+                                <li class="page-item">
+                                    <a class="page-link" href="generos?pagina=<?= $this->view->paginaPosterior ?>">Próximo</a>
+                                </li>
+                            <?php endif ?>
+
+                        </ul>
+                    </nav>
+                <?php endif ?>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootadmin.min.js"></script>
+    

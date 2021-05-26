@@ -36,17 +36,20 @@
             <h2>Escolha sua playlist</h2>
           </div>
         </div>
+        
         <div class="row">
+        <?php foreach($this->view->generos as $genero):?>
           <div class="col-md-3 pt-5">
             <div class="card shadow rounded">
               <div class="card-body" >
-                <h5 class="card-title" >Eletrônica</h5>
-                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, quaerat sint? Nihil repellendus culpa consec.</p>
-                <a href="/eletronica" class="btn btn-success btn-verde btn-visitar btn-visitar">Visitar</a>
+                <h5 class="card-title" ><?=$genero['genero']?></h5>
+                <p class="card-text"><?=$genero['descricao']?></p>
+                <a href="/playlist?genero=<?=$genero['genero']?>&id=<?= $genero['id'] ?>" class="btn btn-success btn-verde btn-visitar btn-visitar">Visitar</a>
               </div>
             </div>
           </div>
-          <div class="col-md-3 pt-5">
+        <?php endforeach ?>
+          <!-- <div class="col-md-3 pt-5">
            <div class="card shadow rounded">
               <div class="card-body">
                 <h5 class="card-title">Rap</h5>
@@ -112,7 +115,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <section class="pb-4"></section>
       </section><!--Fim section Playlist-->       
       
