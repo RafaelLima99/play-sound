@@ -136,16 +136,17 @@ class AudioPlaylist{
         *       handle link clicks
         *
         */
-        $("#"+this.playlistId+" li a ").click(function(e){
+         
+        $("#"+this.playlistId+" li a").click(function(e){
+           
+            // $("li a").find('i').removeClass("fa-pause");
+            // $("li a").find('i').addClass("fa");
+            // $("li a").find('i').addClass("fa-play");
             
-            $("li a").find('i').removeClass("fa-pause");
-            $("li a").find('i').addClass("fa");
-            $("li a").find('i').addClass("fa-play");
-            
-            //seleciona o elemento "a" clicado e modifica a class do seu elemento pai que é 'i' 
-            $(this).find('i').removeClass('fa-play')
-            $(this).find('i').addClass("fa") 
-            $(this).find('i').addClass("fa-pause") 
+            // //seleciona o elemento "a" clicado e modifica a class do seu elemento pai que é 'i' 
+            // $(this).find('i').removeClass('fa-play')
+            // $(this).find('i').addClass("fa") 
+            // $(this).find('i').addClass("fa-pause") 
 
             e.preventDefault();
             // set track based on index of 
