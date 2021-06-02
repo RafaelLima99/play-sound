@@ -1,4 +1,53 @@
+  <style>
+  
+  .animacao {
+  position: relative;
+  padding-left:45px;
+  
+ 
+  
+}
 
+.bloco {
+  display: ;
+  bottom: 5px;
+  width: 09px;
+  height: 5px;
+  background: #9b59b6;
+  position: absolute;
+  animation: audio-wave 1.5s infinite ease-in-out;
+  display:none; 
+  
+}
+
+.bloco:nth-child(1) {
+left: 00px;
+animation-delay: 0.0s;
+}
+.bloco:nth-child(2) {
+left: 11px;
+animation-delay: 0.1s;
+}
+
+.bloco:nth-child(3) {
+left: 22px;
+animation-delay: 0.2s;
+}
+
+
+@keyframes audio-wave {
+    0% {height:5px;transform:translateY(0px);background:#9b59b6;}
+    25% {height:40px;transform:translateY(20px);background:#3498db;}
+/*effect is to animate the height of each span from 5px to 30px*/
+/*translateY makes Y axis move down to give the effect that it is growing from the center*/
+
+    50% {height:5px;transform:translateY(0px);background:#9b59b6;}
+    100% {height:5px;transform:translateY(0px);background:#9b59b6;}
+}
+
+
+
+  </style>
     <section><!--Inicio palylist-->
       <div class="container">
         <div class="row playlist">
@@ -51,7 +100,12 @@
                  
               <li class="list-group-item">
                 <a href="<?= $this->view->diretorio ?><?=$musica['arquivo']?>" class="nome-musica">
-                  <i class="fa fa-play mr-1"></i>
+                  <i class="fas fa-music mr-1"></i>
+                  <!-- <div class="animacao" style="display:inline;" class="">
+                    <div class="bloco"></div>
+                    <div class="bloco"></div>
+                    <div class="bloco"></div>
+                  </div> -->
                   <?= $musica['musica']?> - <?= $musica['autor']?>
 
                 </a>
