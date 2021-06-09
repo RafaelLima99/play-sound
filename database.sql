@@ -24,28 +24,29 @@ VALUES
   (1, 'Rafael Lima', 'rafael@teste', '$2y$10$7Ne4dc8tb5MXj7IO0FbDNeOeOd..fWLN7K1Xc5O//kdWl64OdhUw6', '2');
 
 
-
 CREATE TABLE `tb_genero` (
   `id` int(11) NOT NULL,
-  `genero` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+  `genero` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `diretorio` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `descricao` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 ALTER TABLE `tb_genero`
   ADD PRIMARY KEY (`id`);
 
-  ALTER TABLE `tb_genero`
+ALTER TABLE `tb_genero`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
-INSERT INTO `tb_genero` (`id`, `genero`) VALUES
-(1, 'eletrônica'),
-(2, 'rap'),
-(3, 'evangelica'),
-(4, 'para estudar'),
-(5, 'reggae'),
-(6, 'para programar'),
-(7, 'anime'),
-(8, 'forró');
-
+INSERT INTO `tb_genero` (`id`, `genero`, `diretorio`) VALUES
+(1, 'eletrônica', 'musicas/eletronica/'),
+(2, 'rap', 'musicas/rap/'),
+(3, 'evangelica', 'musicas/evangelica/'),
+(4, 'para estudar', 'musicas/paraEstudar/'),
+(5, 'reggae', 'musicas/reggae/'),
+(6, 'para programar', 'musicas/para-programar/'),
+(7, 'anime', 'musicas/anime/'),
+(8, 'forró', 'musicas/forro/');
 
 
 CREATE TABLE `tb_musicas` (

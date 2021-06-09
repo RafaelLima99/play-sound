@@ -73,7 +73,7 @@ class Admin extends Model
 
     public function getAdmin()
     {
-        $query = "SELECT * FROM tb_adm";
+        $query = "SELECT * FROM tb_adm ORDER BY id DESC";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);

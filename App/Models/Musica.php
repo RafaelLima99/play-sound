@@ -81,7 +81,7 @@ class Musica extends Model
 
     public function getPorNome(){
         
-        $query = "SELECT * FROM `tb_musicas` WHERE musica LIKE '%' :nome '%' ";
+        $query = "SELECT * FROM tb_musicas WHERE musica LIKE '%' :nome '%' ";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':nome', $this->__get('nome'));
         $stmt->execute();
@@ -102,7 +102,7 @@ class Musica extends Model
 
     public function getPorNomeEId(){
        
-        $query = "SELECT * FROM `tb_musicas` WHERE id_genero = :id_genero AND musica LIKE '%' :nome '%' ";
+        $query = "SELECT * FROM tb_musicas WHERE id_genero = :id_genero AND musica LIKE '%' :nome '%' ";
         $stmt  = $this->db->prepare($query);
         $stmt->bindValue(':id_genero', $this->__get('id_genero'));
         $stmt->bindValue(':nome', $this->__get('nome'));

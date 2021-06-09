@@ -26,7 +26,7 @@ class Genero extends Model
 
    public function getGenero(){
 
-        $query = "SELECT * FROM `tb_genero`";
+        $query = "SELECT * FROM tb_genero";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
      
@@ -45,7 +45,7 @@ class Genero extends Model
 
    public function getPorGenero(){
 
-      $query = "SELECT * FROM `tb_genero` WHERE genero LIKE '%' :genero '%' ";
+      $query = "SELECT * FROM tb_genero WHERE genero LIKE '%' :genero '%' ";
       $stmt = $this->db->prepare($query);
       $stmt->bindValue(':genero', $this->__get('genero'));
       $stmt->execute();
@@ -75,7 +75,7 @@ class Genero extends Model
    }
 
    public function atualiza(){
-      $query = "UPDATE tb_genero SET descricao = :descricao, id= :id";
+      $query = "UPDATE tb_genero SET descricao = :descricao WHERE id = :id";
       $stmt  = $this->db->prepare($query);
       $stmt->bindValue(':descricao',  $this->__get('descricao'));
       $stmt->bindValue(':id', $this->__get('id'));

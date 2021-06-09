@@ -34,158 +34,111 @@ class Route extends Bootstrap
 
 		$routes['dashboard'] = array(
 			'route' => '/dashboard',
-			'controller' => 'DashboardController',
+			'controller' => 'MusicaController',
 			'action' => 'dashboard'
-		);
-
-		$routes['upload'] = array(
-			'route' => '/upload',
-			'controller' => 'DashboardController',
-			'action' => 'upload'
-		);
-
-		$routes['minhasMusicas'] = array(
-			'route' => '/minhas-musicas',
-			'controller' => 'DashboardController',
-			'action' => 'minhasMusicas'
-		);
-
-		$routes['cadastro'] = array(
-			'route' => '/cadastro',
-			'controller' => 'DashboardController',
-			'action' => 'cadastro'
-		);
-
-		$routes['admins'] = array(
-			'route' => '/admins',
-			'controller' => 'DashboardController',
-			'action' => 'admins'
-		);
-
-		$routes['remove-musica'] = array(
-			'route' => '/remove-musica',
-			'controller' => 'DashboardController',
-			'action' => 'removeMusica'
-		);
-
-		$routes['remove-adm'] = array(
-			'route' => '/remove-adm',
-			'controller' => 'DashboardController',
-			'action' => 'removeAdm'
-		);
-
-		$routes['editar'] = array(
-			'route' => '/editar',
-			'controller' => 'DashboardController',
-			'action' => 'editar'
-		);
-
-		$routes['atualiza'] = array(
-			'route' => '/atualiza',
-			'controller' => 'DashboardController',
-			'action' => 'atualiza'
-		);
-
-		$routes['processaupload'] = array(
-			'route' => '/processaupload',
-			'controller' => 'DashboardController',
-			'action' => 'processaUpload'
-		);
-
-		$routes['eletronica'] = array(
-			'route' => '/eletronica',
-			'controller' => 'PlaylistController',
-			'action' => 'eletronica'
-		);
-
-		$routes['rap'] = array(
-			'route' => '/rap',
-			'controller' => 'PlaylistController',
-			'action' => 'rap'
-		);
-
-		$routes['evangelica'] = array(
-			'route' => '/evangelica',
-			'controller' => 'PlaylistController',
-			'action' => 'evangelica'
-		);
-
-		$routes['para-estudar'] = array(
-			'route' => '/para-estudar',
-			'controller' => 'PlaylistController',
-			'action' => 'paraEstudar'
-		);
-
-		$routes['reggae'] = array(
-			'route' => '/reggae',
-			'controller' => 'PlaylistController',
-			'action' => 'reggae'
-		);
-
-		$routes['para-programar'] = array(
-			'route' => '/para-programar',
-			'controller' => 'PlaylistController',
-			'action' => 'paraProgramar'
-		);
-
-		$routes['anime'] = array(
-			'route' => '/anime',
-			'controller' => 'PlaylistController',
-			'action' => 'anime'
-		);
-
-		$routes['forro'] = array(
-			'route' => '/forro',
-			'controller' => 'PlaylistController',
-			'action' => 'forro'
-		);
-
-		$routes['playlist'] = array(
-			'route' => '/playlist',
-			'controller' => 'PlaylistController',
-			'action' => 'forro'
-		);
-
-		$routes['genero'] = array(
-			'route' => '/generos',
-			'controller' => 'DashboardController',
-			'action' => 'genero'
-		);
-
-		$routes['criar-genero'] = array(
-			'route' => '/criar-genero',
-			'controller' => 'DashboardController',
-			'action' => 'criaGenero'
-		);
-
-		$routes['cadastra-genero'] = array(
-			'route' => '/cadastra-genero',
-			'controller' => 'DashboardController',
-			'action' => 'cadastroGenero'
-		);
-
-		$routes['editar-genero'] = array(
-			'route' => '/editar-genero',
-			'controller' => 'DashboardController',
-			'action' => 'editarGenero'
-		);
-
-		$routes['atualizar-genero'] = array(
-			'route' => '/atualizar-genero',
-			'controller' => 'DashboardController',
-			'action' => 'atualizarGenero'
-		);
-
-		$routes['remover-genero'] = array(
-			'route' => '/remover-genero',
-			'controller' => 'DashboardController',
-			'action' => 'removerGenero'
 		);
 
 		$routes['playlist'] = array(
 			'route' => '/playlist',
 			'controller' => 'PlaylistController',
 			'action' => 'index'
+		);
+
+
+		//Rotas para músicas
+
+		$routes['upload'] = array(
+			'route' => '/upload',
+			'controller' => 'MusicaController',
+			'action' => 'upload'
+		);
+
+		$routes['processaupload'] = array(
+			'route' => '/processaupload',
+			'controller' => 'MusicaController',
+			'action' => 'processaUpload'
+		);
+
+		$routes['minhasMusicas'] = array(
+			'route' => '/minhas-musicas',
+			'controller' => 'MusicaController',
+			'action' => 'minhasMusicas'
+		);
+
+		$routes['remove-musica'] = array(
+			'route' => '/remove-musica',
+			'controller' => 'MusicaController',
+			'action' => 'removeMusica'
+		);
+
+		$routes['editar'] = array(
+			'route' => '/editar',
+			'controller' => 'MusicaController',
+			'action' => 'editar'
+		);
+
+		$routes['atualiza'] = array(
+			'route' => '/atualiza',
+			'controller' => 'MusicaController',
+			'action' => 'atualiza'
+		);
+
+		//Rotas para Admin
+
+		$routes['cadastro'] = array(
+			'route' => '/cadastro-admin',
+			'controller' => 'AdminController',
+			'action' => 'cadastro'
+		);
+
+		$routes['admins'] = array(
+			'route' => '/admins',
+			'controller' => 'AdminController',
+			'action' => 'admins'
+		);
+
+		$routes['remove-adm'] = array(
+			'route' => '/remove-adm',
+			'controller' => 'AdminController',
+			'action' => 'removeAdm'
+		);
+
+		//rotas para genero
+
+		$routes['genero'] = array(
+			'route' => '/generos',
+			'controller' => 'GeneroController',
+			'action' => 'genero'
+		);
+
+		$routes['criar-genero'] = array(
+			'route' => '/criar-genero',
+			'controller' => 'GeneroController',
+			'action' => 'criaGenero'
+		);
+
+		$routes['cadastra-genero'] = array(
+			'route' => '/cadastra-genero',
+			'controller' => 'GeneroController',
+			'action' => 'cadastroGenero'
+		);
+
+		$routes['editar-genero'] = array(
+			'route' => '/editar-genero',
+			'controller' => 'GeneroController',
+			'action' => 'editarGenero'
+		);
+
+		$routes['atualizar-genero'] = array(
+			'route' => '/atualizar-genero',
+			'controller' => 'GeneroController',
+			'action' => 'atualizarGenero'
+		);
+
+		$routes['remover-genero'] = array(
+			'route' => '/remover-genero',
+			'controller' => 'GeneroController',
+			'action' => 'removerGenero'
 		);
 
 		$this->setRoutes($routes);
