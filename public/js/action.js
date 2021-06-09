@@ -11,9 +11,9 @@
     else if(url == '/minhas-musicas'){
         $('#btn-musicas').addClass('active')
     }
-    else if(url == '/cadastro'){
-        $('#btn-cadastro').addClass('active')
-    }
     else if(url == '/admins'){
         $('#btn-admins').addClass('active')
+    }
+    else if(url == '/generos'){
+        $('#btn-generos').addClass('active')
     }
